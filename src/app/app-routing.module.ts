@@ -11,6 +11,26 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'lista',
+    loadChildren: () => import('./pages/lista/lista.module').then( m => m.ListaPageModule)
+  },
+  {
+    path: 'acao',
+    loadChildren: () => import('./pages/acao/acao.module').then( m => m.AcaoPageModule)
+  },
+  {
+    path: 'aventura',
+    loadChildren: () => import('./pages/aventura/aventura.module').then( m => m.AventuraPageModule)
+  },
+  {
+    path: 'esporte',
+    loadChildren: () => import('./pages/esporte/esporte.module').then( m => m.EsportePageModule)
+  },
+  {
+    path: 'fantasia',
+    loadChildren: () => import('./pages/fantasia/fantasia.module').then( m => m.FantasiaPageModule)
+  },
 ];
 
 @NgModule({
