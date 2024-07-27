@@ -1,12 +1,24 @@
-<ion-header>
-  <button class="button-30" role="button">Voltar</button>
-</ion-header>
 <ion-content [fullscreen]="true">
+  <div *ngIf="isLoading" class="spinner-container">
+    <ngx-spinner
+      bdColor="rgba(0, 0, 0, 0.8)"
+      size="medium"
+      color="#fff"
+      type="ball-spin-clockwise"
+      [fullScreen]="true"
+      [show]="true">
+      <img src="../../../assets/spinner.gif" alt="Loading..." />
+    </ngx-spinner>
+  </div>
   <ion-card *ngFor="let historia of historias">
-    <img id="img" width="100%" height="350" [src]="historia.img | safe">
-    <ion-card-header>
-      <h3 class="audio open-sans"> {{historia.titulo}}</h3>
-    </ion-card-header>
-      <audio controls class="controls" [src]="historia.audio | safe"></audio>
+    <ion-card-content>
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <img alt="Silhouette of mountains" [src]="historia.img | safe" width="180px" height="180px" />
+        </ion-thumbnail>
+        <ion-label><p class="open-sans-bold">{{historia.titulo}}</p></ion-label>
+      </ion-item>
+    </ion-card-content>
+    <audio controls class="controls" [src]="historia.audio | safe"></audio>
   </ion-card>
 </ion-content>

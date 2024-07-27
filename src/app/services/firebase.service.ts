@@ -19,6 +19,17 @@ export class FirebaseService {
   getAcao(): Observable<Historias[]> {
     return this.firestore.collection<Historias>('acao').valueChanges({ idField: 'id' });
   }
- 
 
+  getAventura(): Observable<Historias[]> {
+    return this.firestore.collection<Historias>('aventura').valueChanges({ idField: 'id' });
+  }
+ 
+  getEsporte(): Observable<Historias[]> {
+    return this.firestore.collection<Historias>('esporte').valueChanges({ idField: 'id' });
+  }
+ 
+  getFantasia(): Observable<Historias[]> {
+    return this.firestore.collection<Historias>('fantasia').valueChanges({ idField: 'id' });
+  }
+ 
 }

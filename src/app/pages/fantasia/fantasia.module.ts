@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -6,7 +6,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { FantasiaPageRoutingModule } from './fantasia-routing.module';
 
-import { FantasiaPage } from './fantasia.page';
+import { FantasiaPage, SafeFantasia } from './fantasia.page';
 
 @NgModule({
   imports: [
@@ -15,6 +15,7 @@ import { FantasiaPage } from './fantasia.page';
     IonicModule,
     FantasiaPageRoutingModule
   ],
-  declarations: [FantasiaPage]
+  declarations: [FantasiaPage, SafeFantasia],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class FantasiaPageModule {}

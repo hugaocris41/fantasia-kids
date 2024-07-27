@@ -1,13 +1,24 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>fantasia</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">fantasia</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div *ngIf="isLoading" class="spinner-container">
+    <ngx-spinner
+      bdColor="rgba(0, 0, 0, 0.8)"
+      size="medium"
+      color="#fff"
+      type="ball-spin-clockwise"
+      [fullScreen]="true"
+      [show]="true">
+      <img src="../../../assets/spinner.gif" alt="Loading..." />
+    </ngx-spinner>
+  </div>
+  <ion-card *ngFor="let historia of historias">
+    <ion-card-content>
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <img alt="Silhouette of mountains" [src]="historia.img | safe" width="180px" height="180px" />
+        </ion-thumbnail>
+        <ion-label><p class="open-sans-bold">{{historia.titulo}}</p></ion-label>
+      </ion-item>
+    </ion-card-content>
+    <audio controls class="controls" [src]="historia.audio | safe"></audio>
+  </ion-card>
 </ion-content>
