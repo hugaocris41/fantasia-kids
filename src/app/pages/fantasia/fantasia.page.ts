@@ -1,4 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+import { Historia } from 'src/app/model/historia';
+import { FirebaseService } from 'src/app/services/firebase.service';
+import { NgxSpinnerService } from 'ngx-spinner';
+
+@Pipe({
+  name: 'safe',
+})
+
+export class SafeFantasia implements PipeTransform {
+  constructor(private sanitizer: DomSanitizer) {}
+
+  transform(url: any) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
+}
 
 @Component({
   selector: 'app-fantasia',
@@ -7,9 +23,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FantasiaPage implements OnInit {
 
-  constructor() { }
+  historias: Historia[] = [];
+  isLoading: boolean = true;
+
+  constructor( private db: FirebaseService, private spinner: NgxSpinnerService ) { }
 
   ngOnInit() {
+   this.loadData();
   }
 
+  loadData() {
+    this.db.getFantasia().subscribe((data) => {
+      this.spinner.show();
+      this.historias = data;
+      this.isLoading = false;
+    });
+  }
 }

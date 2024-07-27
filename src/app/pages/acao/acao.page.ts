@@ -2,6 +2,7 @@ import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Historia } from 'src/app/model/historia';
 import { FirebaseService } from 'src/app/services/firebase.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Pipe({
   name: 'safe',
@@ -24,12 +25,20 @@ export class SafeAcao implements PipeTransform {
 export class AcaoPage implements OnInit { 
 
   historias: Historia[] = [];
+  isLoading: boolean = true;
 
-  constructor( private db: FirebaseService ) { }
+  constructor( private db: FirebaseService, private spinner: NgxSpinnerService ) { }
 
   ngOnInit() {
+   
+    this.loadData();
+  }
+
+   loadData() {
     this.db.getAcao().subscribe((data) => {
+      this.spinner.show();
       this.historias = data;
+      this.isLoading = false;
     });
   }
 
