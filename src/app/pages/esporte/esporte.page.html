@@ -12,12 +12,12 @@
   </div>
   <ion-card *ngFor="let historia of historias">
     <ion-card-content>
-      <ion-item>
-        <ion-thumbnail slot="start">
-          <img alt="Silhouette of mountains" [src]="historia.img | safe" width="180px" height="180px" />
-        </ion-thumbnail>
-        <ion-label><p class="open-sans-bold">{{historia.titulo}}</p></ion-label>
-      </ion-item>
+      <div class="div1">
+        <img class="img" [src]="historia.img | safe" />
+      </div>
+      <div class="div2">
+        <p class="open-sans-bold">{{historia.titulo}}</p>
+      </div>
     </ion-card-content>
     <audio controls class="controls" [src]="historia.audio | safe"></audio>
   </ion-card>
