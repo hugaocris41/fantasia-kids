@@ -13,6 +13,16 @@ ion-item {
   --inner-border-width: 0;
 }
 
+ion-content{
+  --background: rgb(252, 252, 252);
+  --padding-top: 70px;
+}
+
+ion-thumbnail{
+  width: 120px;
+  height: 120px;
+}
+
 .open-sans-light {
   font-family: "Open Sans", sans-serif;
   font-optical-sizing: auto;
@@ -30,4 +40,10 @@ ion-item {
   font-variation-settings:
     "wdth" 100;
     color: #EE964B;
+}
+
+img{
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }

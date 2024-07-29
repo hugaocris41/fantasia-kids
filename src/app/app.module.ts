@@ -18,6 +18,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NgxSpinnerModule } from 'ngx-spinner';
 
+import { AdMob } from '@capacitor-community/admob';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -39,5 +41,9 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 })
 export class AppModule {
   constructor(){
+    AdMob.initialize({
+      testingDevices: [],
+      initializeForTesting: true
+    });
   }
 }
